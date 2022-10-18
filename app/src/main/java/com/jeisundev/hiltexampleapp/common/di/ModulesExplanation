@@ -1,0 +1,33 @@
+Modules:
+
+Modules are used to organise your dependencies. No matter how confusing the documentation makes it seem it will always be that simple.
+
+
+
+*** What is a Module do? ***
+A module allows us to declare and organise our dependencies and scope them to different components in the app.
+May sound confusing but not once you've given it a go and had a play to see what breaks them and what makes them work well.
+
+
+
+*** What does it mean to scope a component? ***
+Scoping a module to a component just means that the dependencies that we get from that module only live as long as the component they are scoped to.
+That's a stupid way that the documentation will word it, I prefer looking at some examples.
+
+For example, one scope is called ActivityComponent.
+Dependencies in a module scoped to ActivityComponent will be available from an Activity's onCreate until it's onDestroy.
+
+Docs: https://developer.android.com/training/dependency-injection/hilt-android#component-lifetimes
+
+
+
+*** What can I scope a module too? ***
+Hilt provides the following scopes:
+ - Application with SingletonComponent
+ - Activity with ActivityRetainedComponent or ActivityComponent
+ - ViewModel with ViewModelComponent
+ - Fragment with FragmentComponent
+ - View with ViewComponent
+ - Service with ServiceComponent
+
+Docs: https://developer.android.com/training/dependency-injection/hilt-android#component-scopes

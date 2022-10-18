@@ -1,0 +1,81 @@
+plugins {
+    id 'com.android.application'
+    id 'org.jetbrains.kotlin.android'
+    /**
+     * NOTE:
+     * Both 'kotlin-kapt' and 'com.dagger.hilt.android' are required for Hilt to work.
+     * Kapt stands for Kotlin Annotation Processing Tool, Hilt uses a lot of annotations that are supported by kapt.
+     * You will also see below we import the Hilt Compiler via kapt not implementation like we might usually do.
+     */
+    id 'kotlin-kapt'
+    id 'com.google.dagger.hilt.android'
+}
+
+android {
+    namespace 'com.jeisundev.hiltexampleapp'
+    compileSdk 33
+
+    defaultConfig {
+        applicationId "com.jeisundev.hiltexampleapp"
+        minSdk 23
+        targetSdk 33
+        versionCode 1
+        versionName "1.0"
+
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+    }
+
+    buildFeatures {
+        viewBinding true
+    }
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+    kotlinOptions {
+        jvmTarget = '1.8'
+    }
+}
+
+dependencies {
+    // Kotlin Extensions
+    implementation 'androidx.core:core-ktx:1.9.0'
+    // App Compat
+    implementation 'androidx.appcompat:appcompat:1.5.1'
+    // Material Design
+    implementation 'com.google.android.material:material:1.6.1'
+    /**
+     * NOTE:
+     * Here lies the dependencies required to run Hilt.
+     * We get Hilt itself with implementation but as mentioned above we get the compiler for Hilt with kapt
+     */
+    // Hilt
+    implementation "com.google.dagger:hilt-android:2.44"
+    kapt "com.google.dagger:hilt-compiler:2.44"
+    // Navigation Component
+    implementation "androidx.navigation:navigation-fragment-ktx:2.5.2"
+    implementation "androidx.navigation:navigation-ui-ktx:2.5.2"
+    // Rx
+    implementation 'io.reactivex.rxjava3:rxandroid:3.0.0'
+    implementation "io.reactivex.rxjava3:rxjava:3.0.0"
+    // Retrofit
+    implementation 'com.squareup.retrofit2:retrofit:2.9.0'
+    implementation 'com.squareup.retrofit2:converter-gson:2.9.0'
+    implementation 'com.squareup.retrofit2:adapter-rxjava3:2.9.0'
+    // Gson
+    implementation 'com.google.code.gson:gson:2.9.1'
+
+    // JUnit
+    testImplementation 'junit:junit:4.13.2'
+
+    // Test Extensions JUnit
+    androidTestImplementation 'androidx.test.ext:junit:1.1.3'
+    // Espresso
+    androidTestImplementation 'androidx.test.espresso:espresso-core:3.4.0'
+}

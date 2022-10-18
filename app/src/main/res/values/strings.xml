@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">Hilt Example App</string>
+    <string name="get_rates">Get rates</string>
+    <string name="clear_results">Clear</string>
+</resources>
